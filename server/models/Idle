@@ -1,0 +1,43 @@
+const { Schema, model } = require('mongoose');
+
+const idleSchema = new Schema({
+  startTime: {
+    type: Date,    
+  },
+
+  endTime: {
+    type: Date,    
+  },
+
+  driverName: {
+    type: String
+  },
+
+  vehicle: {
+    type: String
+  },
+
+  idleMinutes: {
+    type: Number
+  },
+
+  city: {
+    type: String
+  },
+
+  state: {
+    type: String
+  },
+
+  lat: {
+    type: Number
+  },
+
+  long: {
+    type: Number
+  }
+});
+
+const Idle = model('Idle', idleSchema);
+
+module.exports = Idle;
