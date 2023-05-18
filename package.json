@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start && run tailwind\"",
     "install": "cd server && npm i && cd ../client && npm i",
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/output.css --watch",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
@@ -22,7 +23,13 @@
   },
   "homepage": "https://github.com/JonathanHaws/Semi-Snitch#readme",
   "dependencies": {
+
     "concurrently": "^8.0.1",
     "mongoose": "^7.1.1"
+
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+
   }
 }

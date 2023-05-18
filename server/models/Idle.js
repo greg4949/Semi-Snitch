@@ -18,7 +18,7 @@ const idleSchema = new Schema({
   },
 
   idleMinutes: {
-    type: Number
+    type: String
   },
 
   city: {
@@ -30,11 +30,11 @@ const idleSchema = new Schema({
   },
 
   lat: {
-    type: Number
+    type: String
   },
 
   long: {
-    type: Number
+    type: String
   }
 });
 
