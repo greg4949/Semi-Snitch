@@ -10,8 +10,8 @@ const typeDefs = gql`
     idleMinutes: Float
     city: String
     state: String
-    lat: Float
-    long: Float
+    lat: String
+    long: String
   }
 
 
@@ -21,6 +21,17 @@ const typeDefs = gql`
  
   }
 
+  type Mutation {
+    addIdle(   startTime: String!
+      endTime: String!
+      driverName: String!
+      vehicle: String!
+      idleMinutes: Float!
+      city: String!
+      state: String!
+      lat: String!
+      long: String!): Idle
+  }
 
 `;
 

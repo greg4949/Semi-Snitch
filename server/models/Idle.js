@@ -18,7 +18,7 @@ const idleSchema = new Schema({
   },
 
   idleMinutes: {
-    type: Number
+    type: Schema.Types.Decimal128
   },
 
   city: {
@@ -30,11 +30,11 @@ const idleSchema = new Schema({
   },
 
   lat: {
-    type: Number
+    type: Schema.Types.Decimal128
   },
 
   long: {
-    type: Number
+    type: Schema.Types.Decimal128
   }
 });
 
