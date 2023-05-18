@@ -4,4 +4,4 @@ An app for effortlessly monitoring your trucks. Import or connect to your ELD da
 Screenshot / Gif
 
 ## Credits
-Greg Kitchen / Jonathan Haws / Colton Mortensen / Masyn Nay / Riley Allred / Kole Dallam / React / Tailwind
+Greg Kitchen / Jonathan Haws / Colton Mortensen / Masyn Nay / Riley Allred / Kole Dallam / React / Tailwind ..
