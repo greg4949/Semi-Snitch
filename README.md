@@ -1,7 +1,9 @@
-# Semi Snitch
-An app for effortlessly monitoring your trucks. Import or connect to your ELD data and automatically get flagged on improvable idle times. Connects to Weather api and uses geo cordinates to detect inefficencies.  
+# Semi-Snitch 🚛
+Discover Semi Snitch, your all-in-one solution for optimizing semi-truck operations. Our app seamlessly tracks gas consumption, driver performance, and environmental conditions, empowering businesses to maximize efficiency. With personalized coaching sessions, drivers can fine-tune fuel consumption and idle times, while our integrated weather data ensures smart decision-making. Experience the power of Semi Snitch - where efficiency meets effectiveness!
 
-Screenshot / Gif
-
-## Credits
-Greg Kitchen / Jonathan Haws / Colton Mortensen / Masyn Nay / Riley Allred / Kole Dallam / React / Tailwind ..
+# Author ✏️
+- Kole Dallam
+- Greg Kitchen
+- Masyn Nay
+- Jonathan Haws
+- Colton Mortensen
