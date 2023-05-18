@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <h1>Semi Snitch</h1>
+      <h1 className='text-red-500'>Semi Snitch</h1>
       </header>
   );
 };
