@@ -7,7 +7,12 @@ const resolvers = {
       },
 
     },
-
+    Mutation: {
+      addIdle: async (parent, args) =>{
+        const idleEvent = await Idle.create(args)
+        return idleEvent;
+      }
+    }
   };
   
   module.exports = resolvers;
