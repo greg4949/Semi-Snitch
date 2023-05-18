@@ -23,9 +23,13 @@
   },
   "homepage": "https://github.com/JonathanHaws/Semi-Snitch#readme",
   "dependencies": {
-    "concurrently": "^8.0.1"
+
+    "concurrently": "^8.0.1",
+    "mongoose": "^7.1.1"
+
   },
   "devDependencies": {
     "tailwindcss": "^3.3.2"
+
   }
 }
