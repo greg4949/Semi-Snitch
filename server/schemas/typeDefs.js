@@ -7,7 +7,7 @@ const typeDefs = gql`
     endTime: String
     driverName: String
     vehicle: String
-    idleMinutes: Float
+    idleMinutes: String
     city: String
     state: String
     lat: String
@@ -26,7 +26,7 @@ const typeDefs = gql`
       endTime: String!
       driverName: String!
       vehicle: String!
-      idleMinutes: Float!
+      idleMinutes: String!
       city: String!
       state: String!
       lat: String!

@@ -9,7 +9,7 @@ export const ADD_IDLE =gql`
                 endTime: String
                 driverName: String
                 vehicle: String
-                idleMinutes: Float
+                idleMinutes: String
                 city: String
                 state: String
                 lat: String
