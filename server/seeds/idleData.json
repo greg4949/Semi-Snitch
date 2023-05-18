@@ -1,0 +1,112 @@
+[
+  {
+    "startTime": "5/5/2023 8:19",
+    "endTime": "5/7/2023 11:47",
+    "driverName": "Michael Lee",
+    "vehicle": "900030",
+    "idleMinutes": "3088.08",
+    "city": "Chicago",
+    "state": "IL",
+    "lat": "41.8781",
+    "long": "-87.6298"
+  },
+  {
+    "startTime": "5/6/2023 12:26",
+    "endTime": "5/7/2023 3:15",
+    "driverName": "Chloe Hughes",
+    "vehicle": "900009",
+    "idleMinutes": "889.87",
+    "city": "Anaheim",
+    "state": "CA",
+    "lat": "33.8353",
+    "long": "-117.9145"
+  },
+  {
+    "startTime": "5/6/2023 12:34",
+    "endTime": "5/7/2023 3:51",
+    "driverName": "Oliver Lopez",
+    "vehicle": "900072",
+    "idleMinutes": "917.85",
+    "city": "Tampa",
+    "state": "FL",
+    "lat": "27.9506",
+    "long": "-82.4572"
+  },
+  {
+    "startTime": "5/6/2023 18:20",
+    "endTime": "5/7/2023 13:17",
+    "driverName": "Grace Hill",
+    "vehicle": "900029",
+    "idleMinutes": "1137.88",
+    "city": "Washington",
+    "state": "D.C.",
+    "lat": "38.9072",
+    "long": "-77.0369"
+  },
+  {
+    "startTime": "5/6/2023 22:08",
+    "endTime": "5/7/2023 1:05",
+    "driverName": "Amelia Martinez",
+    "vehicle": "900073",
+    "idleMinutes": "177.17",
+    "city": "St. Petersburg",
+    "state": "FL",
+    "lat": "27.7676",
+    "long": "-82.6403"
+  },
+  {
+    "startTime": "5/6/2023 22:34",
+    "endTime": "5/7/2023 0:03",
+    "driverName": "Abigail Thompson",
+    "vehicle": "900107",
+    "idleMinutes": "89.95",
+    "city": "Lincoln",
+    "state": "NE",
+    "lat": "40.8136",
+    "long": "-96.7026"
+  },
+  {
+    "startTime": "5/6/2023 22:36",
+    "endTime": "5/7/2023 0:05",
+    "driverName": "Oliver Moore",
+    "vehicle": "900140",
+    "idleMinutes": "89.93",
+    "city": "Minneapolis",
+    "state": "MN",
+    "lat": "44.9778",
+    "long": "-93.265"
+  },
+  {
+    "startTime": "5/6/2023 23:44",
+    "endTime": "5/7/2023 0:06",
+    "driverName": "Isla Russell",
+    "vehicle": "900197",
+    "idleMinutes": "22.63",
+    "city": "Orlando",
+    "state": "FL",
+    "lat": "28.5383",
+    "long": "-81.3792"
+  },
+  {
+    "startTime": "5/6/2023 23:44",
+    "endTime": "5/7/2023 0:03",
+    "driverName": "Elizabeth Parker",
+    "vehicle": "900031",
+    "idleMinutes": "19.05",
+    "city": "Greensboro",
+    "state": "NC",
+    "lat": "36.0726",
+    "long": "-79.792"
+  },
+  {
+    "startTime": "5/6/2023 23:45",
+    "endTime": "5/7/2023 0:03",
+    "driverName": "Sadie Miller",
+    "vehicle": "900257",
+    "idleMinutes": "18.7",
+    "city": "Dallas",
+    "state": "TX",
+    "lat": "32.7767",
+    "long": "-96.797"
+  }
+]
