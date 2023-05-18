@@ -1,13 +1,23 @@
 import React from 'react';
-import Header from './Header';
-import Scan from './Scan';
+import Header from './components/Header';
+import Footer from "./components/Footer"
+import Scan from './components/Scan';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <Header />
-      <Scan />
-    </div>
+      <main>
+        <Routes>
+          <Route
+            path= '/'
+            element= {<Scan/>}/>
+        </Routes>
+      </main>
+
+      <Footer />
+    </Router>
   );
 };
 
