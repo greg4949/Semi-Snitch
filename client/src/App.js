@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Footer from "./components/Footer"
 import Scan from './components/Scan';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './output.css';
+
 
 const App = () => {
   return (
