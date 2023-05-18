@@ -1,4 +1,4 @@
-# Semi Snitch
+# Semi Snitch 🚛
 
 ## Group Project 3:
 
