@@ -6,6 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import './output.css';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import IdleEvent from './pages/IdleEvent';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -39,16 +43,16 @@ const App = () => {
               element={<Scan />} />
             <Route
               path='/login'
-              element={"TODO: ADD LOGIN"} />
+              element={<Login/>} />
             <Route
               path='/signup'
-              element={"TODO: ADD SIGNUP"} />
+              element={<Signup/>} />
             <Route
               path='/profile'
-              element={"TODO: ADD PROFILE"} />
+              element={<Profile/>} />
             <Route
               path='/idle-events/:idleEventId'
-              element={'TODO: ADD IDLE EVENT PAGE'} />
+              element={<IdleEvent/>} />
           </Routes>
         </main>
         <Footer />
