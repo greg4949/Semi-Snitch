@@ -1,6 +1,9 @@
 {
   "name": "project",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.18.0"
+  },
   "description": "An app for effortlessly monitoring your trucks. Import or connect to your ELD data and automatically get flagged on improvable idle times. Connects to Weather api and uses geo cordinates to detect inefficencies.",
   "main": "index.js",
   "scripts": {
@@ -13,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JonathanHaws/Semi-Snitch.git"
+    "url": "git+https://github.com/greg4949/Semi-Snitch.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JonathanHaws/Semi-Snitch/issues"
+    "url": "https://github.com/greg4949/Semi-Snitch/issues"
   },
-  "homepage": "https://github.com/JonathanHaws/Semi-Snitch#readme",
+  "homepage": "https://github.com/greg4949/Semi-Snitch#readme",
   "dependencies": {
 
     "concurrently": "^8.0.1",
