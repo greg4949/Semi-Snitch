@@ -1,6 +1,12 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  type User {
+    _id: ID
+    email: String
+    password: String
+  }
+
   type Idle {
     _id: ID!
     startTime: String
@@ -14,15 +20,20 @@ const typeDefs = gql`
     long: String
   }
 
-
+  type Auth {
+    token: ID!
+    user: User
+  }
 
   type Query {
     idle: [Idle]
- 
   }
 
   type Mutation {
-    addIdle(   startTime: String!
+    addUser(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addIdle(
+      startTime: String!
       endTime: String!
       driverName: String!
       vehicle: String!
@@ -30,9 +41,9 @@ const typeDefs = gql`
       city: String!
       state: String!
       lat: String!
-      long: String!): Idle
+      long: String!
+    ): Idle
   }
-
 `;
 
 module.exports = typeDefs;
