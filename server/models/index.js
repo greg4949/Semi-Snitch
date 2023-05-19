@@ -1,3 +1,4 @@
 const Idle = require('./Idle');
+const User = require('./User')
 
-module.exports = { Idle };
+module.exports = { Idle, User };
