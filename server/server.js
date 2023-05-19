@@ -1,6 +1,8 @@
+require('dotenv').config(); 
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const fetchWeatherData = require('./routes/fetchWeatherData');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -14,6 +16,8 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use('/api', fetchWeatherData); 
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -32,7 +36,7 @@ const startApolloServer = async () => {
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath} and weather data live at http://localhost:${PORT}/api/weather`);
     })
   })
   };
