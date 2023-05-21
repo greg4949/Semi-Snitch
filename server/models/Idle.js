@@ -1,43 +1,49 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require("../utils/dateFormat")
 
 const idleSchema = new Schema({
-  startTime: {
-    type: Date,    
+  createdDate: {
+    type: Date,
+    get: (timestamp) => dateFormat(timestamp),
   },
-
-  endTime: {
-    type: Date,    
-  },
-
   driverName: {
-    type: String
+    type: String,
+    required: true,
   },
-
   vehicle: {
-    type: String
+    type: String,
+    required: true,
   },
-
   idleMinutes: {
-    type: String
+    type: String,
+    required: true,
   },
-
+  startTime: {
+    type: String,
+    required: true,
+  },
+  endTime: {
+    type: String,
+    required: true,
+  },
   city: {
-    type: String
+    type: String,
+    required: true,
   },
-
   state: {
-    type: String
+    type: String,
+    required: true,
   },
-
-  lat: {
-    type: String
+  lat:{
+    type: String,
+    required: true,
   },
-
   long: {
-    type: String
+    type:String,
+    required: true,
   }
 });
 
-const Idle = model('Idle', idleSchema);
+const IdleEvent = model ('IdleEvent', idleSchema);
 
-module.exports = Idle;
+module.exports = IdleEvent;

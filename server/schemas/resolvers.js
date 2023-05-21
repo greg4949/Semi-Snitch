@@ -1,12 +1,17 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Idle } = require('../models');
+const { User, Idle, Report } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
       idle: async () => {
-        return Idle.find({});
+        return await Idle.find({}).select('-__v');
+      },
+      //get all reports, and populate the idleEvents inside
+      report: async () =>{
+        return await Report.find({}).populate('idleEvents').select('-__v')
       }
+
 
     },
     Mutation: {
