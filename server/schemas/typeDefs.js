@@ -6,6 +6,10 @@ const typeDefs = gql`
     email: String
     password: String
   }
+  type Report {
+    _id: ID!
+    idleEvents: [Idle]
+  }
 
   type Idle {
     _id: ID!
@@ -27,6 +31,7 @@ const typeDefs = gql`
 
   type Query {
     idle: [Idle]
+    report: [Report]
   }
 
   type Mutation {
