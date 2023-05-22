@@ -10,10 +10,17 @@ import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import IdleEvent from './pages/IdleEvent';
 import Report from './pages/Report';
+import Signup from './pages/Signup';
 
+let API_URL; // work for both dev and production
+if (process.env.NODE_ENV === 'production') {
+  API_URL = '/graphql';
+} else {
+  API_URL = 'http://localhost:3001/graphql';
+}
 const httpLink = createHttpLink({
-  uri: '/graphql'
-})
+  uri: API_URL,
+});
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token')
@@ -35,19 +42,20 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <div className="flex flex-col min-h-screen justify-between">
-        <Router>
-          <Header />
-          <main className="mb-auto">
-            <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/login' element={<Login/>} />
-              <Route path='/profile' element={<Profile/>} />
-              <Route path='/report/:reportId' element={<Report/>}/>
-              <Route path='/idle-event/:idleEventId' element={<IdleEvent/>} />
-            </Routes>
-          </main>
-          <Footer />
-        </Router>
+      <Router>
+        <Header />
+        <main>
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/signup' element={<Signup/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/profile' element={<Profile/>} />
+            <Route path='/report/:reportId' element={<Report/>}/>
+            <Route path='/idle-event/:idleEventId' element={<IdleEvent/>} />            
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
       </div>
     </ApolloProvider>
   );

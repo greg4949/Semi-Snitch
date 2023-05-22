@@ -13,6 +13,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    reports: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Report',
+      },
+    ],
    
   },
   {

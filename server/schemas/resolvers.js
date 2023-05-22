@@ -4,21 +4,44 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-      idle: async () => {
-        return await Idle.find({}).select('-__v');
+      userReports: async (_, __, { user }) => {
+        if (!user) { throw new Error('Authentication required.'); }
+        const userData = await User.findById(user._id).populate({ path: 'reports', populate: { path: 'idleEvents', model: 'Idle', },});
+        return userData.reports;
       },
-      //get all reports, and populate the idleEvents inside
-      report: async () =>{
-        return await Report.find({}).populate('idleEvents').select('-__v')
-      }
-
-
     },
+    
     Mutation: {
-      addIdle: async (parent, args) =>{
-        const idleEvent = await Idle.create(args)
-        return idleEvent;
+      addIdle: async (parent, { reportId, ...idleData }, { user }) => {
+        if (!user) { throw new AuthenticationError('Authentication required'); }
+        const userWithReport = await User.findOne({ _id: user._id, reports: reportId });
+        if (!userWithReport) { throw new AuthenticationError('You cannot add idle to report that doesnt belong to you'); }
+        const idle = await Idle.create(idleData);
+        await Report.findByIdAndUpdate(reportId, { $push: { idleEvents: idle._id } });  
+        return idle;
       },
+      
+      addReport: async (parent, { name }, { user }) => {
+        if (!user) { throw new AuthenticationError('Authentication required'); }
+        const report = await Report.create({ name });
+        const userToUpdate = await User.findById(user._id).select('+reports');
+        userToUpdate.reports.push(report._id);
+        await userToUpdate.save();
+        return report;
+      },
+      
+      deleteReport: async (parent, { reportId }, { user }) => {
+        if (!user) { throw new AuthenticationError('Authentication required'); }
+        const userToUpdate = await User.findById(user._id);
+        if (!userToUpdate.reports.includes(reportId)) { throw new AuthenticationError('You are not authorized to delete this report'); }
+        const report = await Report.findById(reportId);
+        await Idle.deleteMany({ _id: { $in: report.idleEvents } });
+        userToUpdate.reports.pull(reportId);
+        await userToUpdate.save();
+        const deletedReport = await Report.findByIdAndDelete(reportId);
+        return deletedReport;
+      },
+      
       addUser: async (parent, { email, password }) => {
         const user = await User.create({ email, password });
         const token = signToken(user);
@@ -27,22 +50,13 @@ const resolvers = {
       
       login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
-        
-  
-        if (!user) {
-          throw new AuthenticationError('No user found with this email address');
-        }
-  
+        if (!user) { throw new AuthenticationError('No user found with this email address'); }
         const correctPw = await user.isCorrectPassword(password);
-  
-        if (!correctPw) {
-          throw new AuthenticationError('Incorrect credentials');
-        }
-  
+        if (!correctPw) { throw new AuthenticationError('Incorrect credentials'); }
         const token = signToken(user);
-        
         return { token, user };
       },
+      
     }
   };
   

@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
 export default function Login(){
   const [email, setEmail] = useState('')
@@ -16,9 +18,18 @@ export default function Login(){
         break;
     }
   }
-  const formSubmit = (e) => {
+  const [login, { error }] = useMutation(LOGIN_USER);
+  const formSubmit = async (e) => {
     e.preventDefault()
-    //TODO: handle login 
+    try {
+        const { data } = await login({ variables: { email, password }});
+        if(data) {
+            localStorage.setItem('id_token', data.login.token); 
+            window.location.assign('/'); 
+        }
+    } catch (err) {
+        console.error(err);
+    }
   }
 
   return (
@@ -28,13 +39,13 @@ export default function Login(){
           <label className='block text-white text-sm font-bold mb-2' htmlFor='email'>
             Email
           </label>
-          <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700' id='email' type='input' onChange={handleChange} value={email} />
+          <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white' id='email' type='input' onChange={handleChange} value={email} />
         </div>
         <div className='mb-6'>
           <label className='block text-white text-sm font-bold mb-2' htmlFor='password'>
             Password
           </label>
-          <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700' id='password' type='password' onChange={handleChange} value={password} />
+          <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white' id='password' type='password' onChange={handleChange} value={password} />
         </div>
         <div className='flex items-center justify-between'>
           <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' type='submit'>
