@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from "./components/Footer"
-// import Scan from './components/Scan';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
@@ -35,31 +34,24 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            <Route
-              path='/'
-              element={<Homepage />} />
-            <Route
-              path='/login'
-              element={<Login/>} />
-            <Route
-              path='/profile'
-              element={<Profile/>} />
-              <Route
-                path='/report/:reportId'
-                element={<Report/>}/>
-            <Route
-              path='/idle-event/:idleEventId'
-              element={<IdleEvent/>} />
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
+      <div className="flex flex-col min-h-screen justify-between">
+        <Router>
+          <Header />
+          <main className="mb-auto">
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/login' element={<Login/>} />
+              <Route path='/profile' element={<Profile/>} />
+              <Route path='/report/:reportId' element={<Report/>}/>
+              <Route path='/idle-event/:idleEventId' element={<IdleEvent/>} />
+            </Routes>
+          </main>
+          <Footer />
+        </Router>
+      </div>
     </ApolloProvider>
   );
 };
 
 export default App;
+
