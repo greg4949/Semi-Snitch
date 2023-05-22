@@ -5,10 +5,14 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
+    reports: [Report]
   }
+
   type Report {
     _id: ID!
+    name: String!
     idleEvents: [Idle]
+    createdAt: String!
   }
 
   type Idle {
@@ -32,11 +36,14 @@ const typeDefs = gql`
   type Query {
     idle: [Idle]
     report: [Report]
+    userReports: [Report]
   }
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addReport(name: String!): Report
+    deleteReport(reportId: ID!): Report
     addIdle(
       startTime: String!
       endTime: String!
@@ -47,7 +54,9 @@ const typeDefs = gql`
       state: String!
       lat: String!
       long: String!
+      reportId: ID!
     ): Idle
+    
   }
 `;
 

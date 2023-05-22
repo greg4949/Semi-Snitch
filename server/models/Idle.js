@@ -44,6 +44,6 @@ const idleSchema = new Schema({
   }
 });
 
-const IdleEvent = model ('IdleEvent', idleSchema);
+const Idle = model ('Idle', idleSchema);
 
-module.exports = IdleEvent;
+module.exports = Idle;

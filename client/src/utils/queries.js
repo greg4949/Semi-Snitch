@@ -1,18 +1,22 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_IDLE = gql`
-query idle {
-    idle {
+export const GET_USER_REPORTS = gql`
+  query UserReports {
+    userReports {
       _id
-      city
-      driverName
-      endTime
-      idleMinutes
-      lat
-      long
-      startTime
-      state
-      vehicle
+      name
+      createdAt
+      idleEvents {
+        startTime
+        endTime
+        driverName
+        vehicle
+        idleMinutes
+        city
+        state
+        lat
+        long
+      }
     }
   }
 `;

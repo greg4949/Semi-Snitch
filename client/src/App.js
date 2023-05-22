@@ -11,10 +11,17 @@ import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import IdleEvent from './pages/IdleEvent';
 import Report from './pages/Report';
+import Signup from './pages/Signup';
 
+let API_URL; // work for both dev and production
+if (process.env.NODE_ENV === 'production') {
+  API_URL = '/graphql';
+} else {
+  API_URL = 'http://localhost:3001/graphql';
+}
 const httpLink = createHttpLink({
-  uri: '/graphql'
-})
+  uri: API_URL,
+});
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token')
@@ -43,6 +50,9 @@ const App = () => {
               path='/'
               element={<Homepage />} />
             <Route
+              path='/signup'
+              element={<Signup/>} />
+            <Route
               path='/login'
               element={<Login/>} />
             <Route
@@ -53,7 +63,7 @@ const App = () => {
                 element={<Report/>}/>
             <Route
               path='/idle-event/:idleEventId'
-              element={<IdleEvent/>} />
+              element={<IdleEvent/>} />            
           </Routes>
         </main>
         <Footer />
