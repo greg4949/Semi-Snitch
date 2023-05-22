@@ -7,23 +7,31 @@ export default function Report({ report }) {
   const { _id, name, createdAt } = report;
   const [deleteReport] = useMutation(DELETE_REPORT);
 
-  const onDelete = async () => {
+  const onDelete = async (e) => {
     try {
-      const { data } = await deleteReport({ variables: { reportId: _id }, });
-      window.location.reload();     
+      const { data } = await deleteReport({ variables: { reportId: _id } });
+      window.location.reload();
     } catch (error) {
       console.error('Error deleting report:', error);
     }
   };
 
   return (
-    <ul className='flex flex-col gap-5 m-10'>
+    <ul className="flex flex-col gap-5 m-10">
+      
       <Link to={`/report/${_id}`}>
-        <li className='bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400 text-white flex items-center'>
-          <div className='flex-grow'>{name}, uploaded on {new Date(parseInt(createdAt)).toLocaleString()}</div>
+        <li className="bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400 text-white flex items-center">
+          <div>{name}, uploaded on {new Date(parseInt(createdAt)).toLocaleString()}</div>
         </li>
       </Link>
-      <button className='ml-auto' onClick={onDelete}>Delete</button>
+      <button className="ml-auto" onClick={onDelete}>Delete</button>
     </ul>
   );
 }
+
+
+
+
+
+
+

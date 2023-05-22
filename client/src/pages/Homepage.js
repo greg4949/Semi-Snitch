@@ -9,13 +9,13 @@ export default function Homepage() {
     const token = localStorage.getItem('id_token');
     const { loading, error, data } = useQuery(GET_USER_REPORTS);
 
-    if (!token) { return <p>Log in to view Reports</p>; }
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error Loading</p>;
+    if (!token) { return <p className='text-center'>Log in to view Reports</p>; }
+    if (loading) return <p className='text-center'> Loading...</p>;
+    if (error) return <p className='text-center'>Error Loading</p>;
 
   return (
     <div>
-      <h2>Saved Reports</h2>
+      <h2 className='text-center'>Saved Reports</h2>
       <div>
         {data.userReports.map((report) => (
           <Report key={report._id} report={report} />

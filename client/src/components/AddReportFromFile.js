@@ -47,7 +47,7 @@ function AddReportFromFile() {
   return (
     <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
       <p className='text-white'>
-        <input type="file" onChange={onFileUpload} /> Upload Report from File (JSON, CSV)
+        <input type="file" onChange={onFileUpload} />  (JSON, CSV) 
       </p>
     </li>
   );
