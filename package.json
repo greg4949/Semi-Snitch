@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/greg4949/Semi-Snitch#readme",
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "concurrently": "^8.0.1"
   },
   "devDependencies": {

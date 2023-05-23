@@ -12,6 +12,7 @@ import IdleEvent from './pages/IdleEvent';
 import Report from './pages/Report';
 import Signup from './pages/Signup';
 
+
 let API_URL; // work for both dev and production
 if (process.env.NODE_ENV === 'production') {
   API_URL = '/graphql';
@@ -51,7 +52,7 @@ const App = () => {
             <Route path='/login' element={<Login/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/report/:reportId' element={<Report/>}/>
-            <Route path='/idle-event/:idleEventId' element={<IdleEvent/>} />            
+            <Route path='/IdleEvent' element={<IdleEvent/>} />            
           </Routes>
         </main>
         <Footer />
