@@ -5,17 +5,17 @@ import { GET_USER_REPORTS } from '../utils/queries'
 
 function IdleEvent() {
     const { loading, error, data } = useQuery(GET_USER_REPORTS);
-  
+
     if (loading) {
       return <p>Loading...</p>;
     }
-  
+
     if (error) {
       return <p>Error: {error.message}</p>;
     }
-  
+
     const userReports = data.userReports;
-  
+
     return (
       <div>
         <h1>Idle Event</h1>
@@ -76,6 +76,5 @@ function IdleEvent() {
       </div>
     );
   }
-  
+
   export default IdleEvent;
-  

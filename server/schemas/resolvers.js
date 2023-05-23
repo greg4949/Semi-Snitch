@@ -9,18 +9,23 @@ const resolvers = {
         const userData = await User.findById(user._id).populate({ path: 'reports', populate: { path: 'idleEvents', model: 'Idle', },});
         return userData.reports;
       },
+      singleReport: async (parent, {reportId}) => {
+
+        return Report.findOne({_id: reportId}).populate({  path: 'idleEvents', model: 'Idle', })
+      }
     },
-    
+
+
     Mutation: {
       addIdle: async (parent, { reportId, ...idleData }, { user }) => {
         if (!user) { throw new AuthenticationError('Authentication required'); }
         const userWithReport = await User.findOne({ _id: user._id, reports: reportId });
         if (!userWithReport) { throw new AuthenticationError('You cannot add idle to report that doesnt belong to you'); }
         const idle = await Idle.create(idleData);
-        await Report.findByIdAndUpdate(reportId, { $push: { idleEvents: idle._id } });  
+        await Report.findByIdAndUpdate(reportId, { $push: { idleEvents: idle._id } });
         return idle;
       },
-      
+
       addReport: async (parent, { name }, { user }) => {
         if (!user) { throw new AuthenticationError('Authentication required'); }
         const report = await Report.create({ name });
@@ -29,7 +34,7 @@ const resolvers = {
         await userToUpdate.save();
         return report;
       },
-      
+
       deleteReport: async (parent, { reportId }, { user }) => {
         if (!user) { throw new AuthenticationError('Authentication required'); }
         const userToUpdate = await User.findById(user._id);
@@ -41,13 +46,13 @@ const resolvers = {
         const deletedReport = await Report.findByIdAndDelete(reportId);
         return deletedReport;
       },
-      
+
       addUser: async (parent, { email, password }) => {
         const user = await User.create({ email, password });
         const token = signToken(user);
         return { token, user };
       },
-      
+
       login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
         if (!user) { throw new AuthenticationError('No user found with this email address'); }
@@ -56,8 +61,8 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
-      
+
     }
   };
-  
+
   module.exports = resolvers;

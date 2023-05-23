@@ -37,6 +37,7 @@ const typeDefs = gql`
     idle: [Idle]
     report: [Report]
     userReports: [Report]
+    singleReport(reportId: ID!): Report
   }
 
   type Mutation {
@@ -56,7 +57,7 @@ const typeDefs = gql`
       long: String!
       reportId: ID!
     ): Idle
-    
+
   }
 `;
 
