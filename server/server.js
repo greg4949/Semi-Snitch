@@ -7,7 +7,6 @@ const { authMiddleware } = require('./utils/auth');
 
 const fetchWeatherData = require('./routes/fetchWeatherData');
 
-
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 

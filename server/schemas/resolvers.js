@@ -13,6 +13,7 @@ const resolvers = {
     
     Mutation: {
       addIdle: async (parent, { reportId, ...idleData }, { user }) => {
+        console.log(idleData)
         if (!user) { throw new AuthenticationError('Authentication required'); }
         const userWithReport = await User.findOne({ _id: user._id, reports: reportId });
         if (!userWithReport) { throw new AuthenticationError('You cannot add idle to report that doesnt belong to you'); }

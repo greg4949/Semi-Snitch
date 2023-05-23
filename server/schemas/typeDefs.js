@@ -26,6 +26,9 @@ const typeDefs = gql`
     state: String
     lat: String
     long: String
+    minTemp: String
+    maxTemp: String
+    coaching: String
   }
 
   type Auth {
@@ -55,6 +58,9 @@ const typeDefs = gql`
       lat: String!
       long: String!
       reportId: ID!
+      minTemp: String
+      maxTemp: String
+      coaching: String
     ): Idle
     
   }
