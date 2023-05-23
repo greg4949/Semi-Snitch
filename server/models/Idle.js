@@ -41,6 +41,15 @@ const idleSchema = new Schema({
   long: {
     type:String,
     required: true,
+  },
+  minTemp: {
+    type: String,
+  },
+  maxTemp: {
+    type: String,
+  },
+  coaching: {
+    type: String,
   }
 });
 

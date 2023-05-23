@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useParams} from 'react-router-dom'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_SINGLE_REPORT } from '../utils/queries';
 
+import IdleTableRow from '../components/IdleTableRow';
+
 export default function Report() {
-  const { reportId } = useParams()
-  const { loading, error, data } = useQuery(GET_SINGLE_REPORT, {variables: {reportId: reportId}});
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+
+    const { reportId } = useParams()
+    const { loading, error, data } = useQuery(GET_SINGLE_REPORT, {variables: {reportId: reportId}});
+    if (loading) {
+      return <p>Loading...</p>;
+    }
 
     if (error) {
       return <p>Error: {error.message}</p>;
     }
     const report = data.singleReport
+
+    // const [formState, setFormState] = useState([])
 
 
     return (
@@ -40,41 +45,17 @@ export default function Report() {
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Longitude</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Low Temp</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>High Temp</th>
-              {/* <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Does not need coaching</th> */}
-              <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Needs coaching</th>
-              <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Coached</th>
+              <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Coaching?</th>
+
             </tr>
           </thead>
 
             <tbody key={report._id} className='table-row-group'>
               <>
                 {report.idleEvents.map((event) => (
-                  <React.Fragment key={event.startTime}>
-                    <tr className='table-row'>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.startTime}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.endTime}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.driverName}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.vehicle}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.idleMinutes}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.city}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.state}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.lat}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.long}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.lowTemp}</td>
-                    <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.highTemp}</td>
-                    {/* <td className='table-cell border border-slate-600 bg-slate-100 p-2'>
-                      <input type="checkbox" name="coachingStatus" value="doesNotNeed" />
-                    </td> */}
-                    <td className='table-cell text-center border border-slate-600 bg-slate-100 p-2'>
-                      <input type="checkbox" name="coachingStatus" value="needsCoaching" />
-                    </td>
-                    <td className='table-cell text-center border border-slate-600 bg-slate-100 p-2'>
-                      <input type="checkbox" name="coachingStatus" value="coached" />
-                    </td>
-                    </tr>
-                  </React.Fragment>
+                  <IdleTableRow event={event}/>
                 ))}
-</>
+            </>
           </tbody>
 
         </table>

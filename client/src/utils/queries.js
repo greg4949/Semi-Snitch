@@ -28,6 +28,7 @@ export const GET_SINGLE_REPORT = gql`
       name
       createdAt
       idleEvents {
+        _id
         startTime
         endTime
         driverName
@@ -35,6 +36,9 @@ export const GET_SINGLE_REPORT = gql`
         idleMinutes
         city
         state
+        minTemp
+        maxTemp
+        coaching
         lat
         long
       }

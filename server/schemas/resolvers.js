@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
       userReports: async (_, __, { user }) => {
         if (!user) { throw new Error('Authentication required.'); }
-        const userData = await User.findById(user._id).populate({ path: 'reports', populate: { path: 'idleEvents', model: 'Idle', },});
+        const userData = await User.findById(user._id).populate('reports');
         return userData.reports;
       },
       singleReport: async (parent, {reportId}) => {
@@ -18,6 +18,7 @@ const resolvers = {
 
     Mutation: {
       addIdle: async (parent, { reportId, ...idleData }, { user }) => {
+        console.log(idleData)
         if (!user) { throw new AuthenticationError('Authentication required'); }
         const userWithReport = await User.findOne({ _id: user._id, reports: reportId });
         if (!userWithReport) { throw new AuthenticationError('You cannot add idle to report that doesnt belong to you'); }
@@ -61,6 +62,11 @@ const resolvers = {
         const token = signToken(user);
         return { token, user };
       },
+
+      updateCoaching: async (parent, {idleId, coaching}) => {
+        const idleEvent = await Idle.findByIdAndUpdate(idleId, {coaching: coaching})
+        return idleEvent
+      }
 
     }
   };
