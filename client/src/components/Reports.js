@@ -18,13 +18,14 @@ export default function Report({ report }) {
 
   return (
     <ul className="flex flex-col gap-5 m-10">
-      
-      <Link to={`/report/${_id}`}>
-        <li className="bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400 text-white flex items-center">
+      <li className="bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400 text-white flex items-center justify-between">
+        <Link to={`/report/${_id}`}>
           <div>{name}, uploaded on {new Date(parseInt(createdAt)).toLocaleString()}</div>
-        </li>
-      </Link>
-      <button className="ml-auto" onClick={onDelete}>Delete</button>
+        </Link>
+        <button className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700" onClick={onDelete}>
+          Delete
+        </button>
+      </li>
     </ul>
   );
 }
