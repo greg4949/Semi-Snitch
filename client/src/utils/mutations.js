@@ -54,6 +54,9 @@ export const ADD_IDLE = gql`
     $lat: String!
     $long: String!
     $reportId: ID!
+    $maxTemp: String
+    $minTemp: String
+    $coaching: String
   ) {
     addIdle(
       startTime: $startTime
@@ -66,6 +69,9 @@ export const ADD_IDLE = gql`
       lat: $lat
       long: $long
       reportId: $reportId
+      maxTemp: $maxTemp
+      minTemp: $minTemp
+      coaching: $coaching
     ) {
       _id
       startTime
