@@ -605,6 +605,10 @@ video {
   }
 }
 
+.fixed {
+  position: fixed;
+}
+
 .m-10 {
   margin: 2.5rem;
 }

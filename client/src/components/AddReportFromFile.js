@@ -62,13 +62,22 @@ function AddReportFromFile() {
     }
   };
 
-  return (
-    <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
-      <p className='text-white'>
-        <input type="file" onChange={onFileUpload} />  (JSON, CSV)
-      </p>
-    </li>
-  );
+    return (
+        <div style={{
+            position: 'fixed',
+            bottom: '60px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
+              <p className='text-white'>
+                <input type="file" onChange={onFileUpload} />  (JSON, CSV)
+              </p>
+            </li>
+        </div>
+    );
 }
 
 export default AddReportFromFile;
