@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import {useNavigate} from 'react-router-dom'
+
 
 export default function Signup() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -34,7 +37,7 @@ export default function Signup() {
       const { data } = await addUser({ variables: { email, password } });
       if (data) {
         localStorage.setItem('id_token', data.addUser.token);
-        window.location.assign('/');
+        navigate('/');
       }
     } catch (err) {
       console.error(err);

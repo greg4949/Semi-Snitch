@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-const Header = () => {
+const Header = () => 
+{
   const handleLogout = () => {
-    console.log('logging out');
     localStorage.removeItem('id_token');
-    window.location.reload('/');
+    document.location.reload()
   };
 
-  const loggedin = localStorage.getItem('id_token');
+  const loggedIn = localStorage.getItem('id_token');
 
   return (
     <header className="bg-gray-800">
@@ -18,7 +18,7 @@ const Header = () => {
           <img src={logo} alt="Logo" style={{ height: '72px', width: 'auto' }} />
         </Link>
         <ul className="flex space-x-4">
-          {loggedin ? (
+          {loggedIn ? (
             <li>
               <button onClick={handleLogout} className="text-gray-300 hover:text-white">
                 Logout
