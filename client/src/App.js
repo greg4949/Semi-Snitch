@@ -40,10 +40,10 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div className="flex flex-col min-h-screen">
+      <div className="relative flex flex-col min-h-screen overscroll-none">
       <Router>
         <Header />
-        <main>
+        <main className='flex-1'>
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/signup' element={<Signup/>} />

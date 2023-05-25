@@ -15,17 +15,17 @@ export default function Homepage() {
 
     return (
         <div className='m-0 p-0'>
-            <div className='fixed w-full bg-gray-600'>
-                <h2 className="text-2xl font-bold text-center">
+            <div className='fixed w-full bg-gray-700 top-24 p-3 flex justify-between content-center'>
+                <h2 className="text-2xl font-bold text-white my-auto ml-8">
                     Saved Reports
                 </h2>
+                <AddReportFromFile />
             </div>
-            <div className="mt-32">
+            <div className="mt-48">
                 {data.userReports.map((report) => (
                     <Report key={report._id} report={report} />
                 ))}
             </div>
-            <AddReportFromFile />
         </div>
 
     );

@@ -21,9 +21,9 @@ export default function Report() {
     const report = data.singleReport
 
     return (
-      <div>
-        <h1 className='text-xl mx-auto '>{report.name}</h1>
-        <table className='table-auto w-11/12 m-10 gap-4 flex-col'>
+      <div className='mt-36'>
+        <h1 className='text-xl text-center font-bold'>{report.name}</h1>
+        <table className=' w-11/12 m-10 gap-4 flex-col min-h-screen'>
           <thead className='table-header-group'>
             <tr className='table-row'>
 
