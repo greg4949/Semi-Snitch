@@ -27,7 +27,7 @@ export default function Login(){
         const { data } = await login({ variables: { email, password }});
         if(data) {
             localStorage.setItem('id_token', data.login.token); 
-            navigate('/')
+            window.location.replace('/')
         }
     } catch (err) {
         console.error(err);
