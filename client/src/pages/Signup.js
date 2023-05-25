@@ -37,7 +37,7 @@ export default function Signup() {
       const { data } = await addUser({ variables: { email, password } });
       if (data) {
         localStorage.setItem('id_token', data.addUser.token);
-        navigate('/');
+        document.location('/')
       }
     } catch (err) {
       console.error(err);

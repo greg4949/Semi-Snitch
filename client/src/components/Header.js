@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Header = () =>
 {
+
   const handleLogout = () => {
     localStorage.removeItem('id_token');
-    document.location.reload()
+    window.location.replace('/login')
   };
 
   const loggedIn = localStorage.getItem('id_token');
