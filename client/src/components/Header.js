@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-const Header = () => 
+const Header = () =>
 {
   const handleLogout = () => {
     localStorage.removeItem('id_token');

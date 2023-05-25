@@ -29,7 +29,7 @@ function AddReportFromFile() {
 
     const reportName = event.target.files[0].name
     const reportNameSplit = reportName.split('.')
-    
+
     try {
       const report = await addReport({ variables: { name: reportNameSplit[0] } });
       const reportId = report.data.addReport._id;
@@ -64,15 +64,8 @@ function AddReportFromFile() {
   };
 
     return (
-        <div style={{
-            position: 'fixed',
-            bottom: '60px',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
+        <div className='mr-8'>
+            <li className='flex flex-col gap-5 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
               <p className='text-white'>
                 <input type="file" onChange={onFileUpload} />  (JSON)
               </p>
