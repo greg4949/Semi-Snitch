@@ -22,7 +22,7 @@ export default function Report() {
 
     return (
       <div>
-        <h1>{report.name}</h1>
+        <h1 className='text-xl mx-auto '>{report.name}</h1>
         <table className='table-auto w-11/12 m-10 gap-4 flex-col'>
           <thead className='table-header-group'>
             <tr className='table-row'>

@@ -40,7 +40,7 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div className="flex flex-col min-h-screen justify-between">
+      <div className="flex flex-col min-h-screen">
       <Router>
         <Header />
         <main>

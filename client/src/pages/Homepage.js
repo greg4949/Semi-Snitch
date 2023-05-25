@@ -14,21 +14,19 @@ export default function Homepage() {
     if (error) return <p className='text-center'>Error Loading</p>;
 
     return (
-        <div>
-            <h2 style={{
-                fontSize: '2em',
-                fontWeight: 'bold',
-                marginTop: '-250px',
-                textAlign: 'center'
-            }}>
-                Saved Reports
-            </h2>
-            <div>
+        <div className='m-0 p-0'>
+            <div className='fixed w-full bg-gray-600'>
+                <h2 className="text-2xl font-bold text-center">
+                    Saved Reports
+                </h2>
+            </div>
+            <div className="mt-32">
                 {data.userReports.map((report) => (
-                <Report key={report._id} report={report} />
+                    <Report key={report._id} report={report} />
                 ))}
             </div>
             <AddReportFromFile />
         </div>
+
     );
 }
