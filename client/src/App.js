@@ -7,7 +7,6 @@ import { setContext } from '@apollo/client/link/context'
 import './output.css';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
-import Profile from './pages/Profile';
 import Report from './pages/Report';
 import Signup from './pages/Signup';
 
@@ -49,7 +48,6 @@ const App = () => {
             <Route path='/' element={<Homepage />} />
             <Route path='/signup' element={<Signup/>} />
             <Route path='/login' element={<Login/>} />
-            <Route path='/profile' element={<Profile/>} />
             <Route path='/report/:reportId' element={<Report/>}/>
           </Routes>
         </main>

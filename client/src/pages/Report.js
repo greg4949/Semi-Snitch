@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {useParams} from 'react-router-dom'
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_SINGLE_REPORT } from '../utils/queries';
 
 import IdleTableRow from '../components/IdleTableRow';
 
+//Page for a single report
 export default function Report() {
-
+    //get the ID of the report from the url
     const { reportId } = useParams()
+    //get the data of that report from the db using that ID
     const { loading, error, data } = useQuery(GET_SINGLE_REPORT, {variables: {reportId: reportId}});
     if (loading) {
       return <p>Loading...</p>;
@@ -18,18 +20,9 @@ export default function Report() {
     }
     const report = data.singleReport
 
-    // const [formState, setFormState] = useState([])
-
-
     return (
       <div>
         <h1>{report.name}</h1>
-
-        {/* <th className='table-cell text-left'>Name</th>
-        <th className='table-cell text-left'>Created At</th>
-        <td className='table-cell'>{report.name}</td>
-        <td className='table-cell'>{report.createdAt}</td> */}
-
         <table className='table-auto w-11/12 m-10 gap-4 flex-col'>
           <thead className='table-header-group'>
             <tr className='table-row'>

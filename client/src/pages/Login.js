@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -25,7 +27,7 @@ export default function Login(){
         const { data } = await login({ variables: { email, password }});
         if(data) {
             localStorage.setItem('id_token', data.login.token); 
-            window.location.assign('/'); 
+            navigate('/')
         }
     } catch (err) {
         console.error(err);
