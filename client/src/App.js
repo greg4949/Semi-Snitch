@@ -8,7 +8,6 @@ import './output.css';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
-import IdleEvent from './pages/IdleEvent';
 import Report from './pages/Report';
 import Signup from './pages/Signup';
 
@@ -52,7 +51,6 @@ const App = () => {
             <Route path='/login' element={<Login/>} />
             <Route path='/profile' element={<Profile/>} />
             <Route path='/report/:reportId' element={<Report/>}/>
-            <Route path='/IdleEvent' element={<IdleEvent/>} />            
           </Routes>
         </main>
         <Footer />

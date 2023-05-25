@@ -7,9 +7,10 @@ export default function IdleTableRow({event}){
     console.log(event._id)
     const [coachingStatus, setCoachingStatus] = useState(event.coaching)
 
-    const [updateCoachingOption, {error}] = useMutation(UPDATE_COACHING)
+    const [updateCoaching, {error}] = useMutation(UPDATE_COACHING)
     useEffect(() => {
-        updateCoachingOption({variable: {id: event._id, coaching: coachingStatus}})
+        console.log(coachingStatus, 'inside')
+        updateCoaching({variables: {idleId: event._id, coaching: coachingStatus}})
     }, [coachingStatus])
 
     return (

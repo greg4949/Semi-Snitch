@@ -64,7 +64,7 @@ const resolvers = {
       },
 
       updateCoaching: async (parent, {idleId, coaching}) => {
-        const idleEvent = await Idle.findByIdAndUpdate(idleId, {coaching: coaching})
+        const idleEvent = await Idle.findByIdAndUpdate(idleId, {coaching: coaching}, {new: true})
         return idleEvent
       }
 
