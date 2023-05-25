@@ -40,6 +40,7 @@ const typeDefs = gql`
     idle: [Idle]
     report: [Report]
     userReports: [Report]
+    singleReport(reportId: ID!): Report
   }
 
   type Mutation {
@@ -62,7 +63,8 @@ const typeDefs = gql`
       maxTemp: String
       coaching: String
     ): Idle
-    
+    updateCoaching(idleId: ID!, coaching: String): Idle
+
   }
 `;
 

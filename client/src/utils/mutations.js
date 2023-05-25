@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+
+  export const UPDATE_COACHING = gql`
+  mutation updateCoaching($idleId: ID!, $coaching: String){
+    updateCoaching(idleId: $idleId, coaching: $coaching){
+      _id
+      coaching
+    }
+  }`
+
+
 export const ADD_USER = gql`
   mutation addUser($email: String!, $password: String!) {
     addUser(email: $email, password: $password) {
