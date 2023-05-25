@@ -8,6 +8,8 @@ export default function Report({ report }) {
   const [deleteReport] = useMutation(DELETE_REPORT);
 
   const onDelete = async (e) => {
+    e.stopPropagation()
+    e.preventDefault()
     try {
       const { data } = await deleteReport({ variables: { reportId: _id } });
       window.location.reload();

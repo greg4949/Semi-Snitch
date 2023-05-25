@@ -12,7 +12,7 @@ const Header = () =>
   const loggedIn = localStorage.getItem('id_token');
 
   return (
-    <header className="bg-gray-800">
+    <header className="fixed w-full bg-gray-800">
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/">
           <img src={logo} alt="Logo" style={{ height: '72px', width: 'auto' }} />
