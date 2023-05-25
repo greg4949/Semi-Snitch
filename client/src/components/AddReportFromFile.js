@@ -16,6 +16,14 @@ function AddReportFromFile() {
         });
     };
 
+    const fetchWeatherData = async (lat, lon) => {
+        const apiKey = 'b02be164d047cfbed86694527d1d3a92';
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        const weatherResponse = await fetch(weatherUrl);
+        const weatherData = await weatherResponse.json();     
+        return weatherData;
+    };
+
     const onFileUpload = async (event) => {
         try {
             const report = await addReport({ variables: { name: 'test' } });
@@ -42,15 +50,24 @@ function AddReportFromFile() {
         } catch (error) {
             console.error('Error adding report:', error);
         }
-  };
+    };
 
-  return (
-    <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
-      <p className='text-white'>
-        <input type="file" onChange={onFileUpload} />  (JSON, CSV) 
-      </p>
-    </li>
-  );
+    return (
+        <div style={{
+            position: 'fixed',
+            bottom: '60px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
+              <p className='text-white'>
+                <input type="file" onChange={onFileUpload} />  (JSON, CSV) 
+              </p>
+            </li>
+        </div>
+    );
 }
 
 export default AddReportFromFile;
