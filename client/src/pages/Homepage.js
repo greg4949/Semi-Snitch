@@ -13,15 +13,22 @@ export default function Homepage() {
     if (loading) return <p className='text-center'> Loading...</p>;
     if (error) return <p className='text-center'>Error Loading</p>;
 
-  return (
-    <div>
-      <h2 className='text-center'>Saved Reports</h2>
-      <div>
-        {data.userReports.map((report) => (
-          <Report key={report._id} report={report} />
-        ))}
-      </div>
-      <AddReportFromFile />
-    </div>
-  );
+    return (
+        <div>
+            <h2 style={{
+                fontSize: '2em',
+                fontWeight: 'bold',
+                marginTop: '-250px',
+                textAlign: 'center'
+            }}>
+                Saved Reports
+            </h2>
+            <div>
+                {data.userReports.map((report) => (
+                <Report key={report._id} report={report} />
+                ))}
+            </div>
+            <AddReportFromFile />
+        </div>
+    );
 }

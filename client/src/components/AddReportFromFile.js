@@ -24,18 +24,14 @@ function AddReportFromFile() {
         return weatherData;
     };
 
-    
-    console.log(document.location.href)
     const onFileUpload = async (event) => {
-
         try {
             const report = await addReport({ variables: { name: 'test' } });
             const reportId = report.data.addReport._id;
             const idleInfo = JSON.parse(await readFile(event.target.files[0]));
 
-
             for (const info of idleInfo) {
-              const weatherData = await fetchWeatherData(info.lat, info.long);
+                const weatherData = await fetchWeatherData(info.lat, info.long);
                 try {
                     await addIdle({
                         variables: {
@@ -59,15 +55,24 @@ function AddReportFromFile() {
         } catch (error) {
             console.error('Error adding report:', error);
         }
-  };
+    };
 
-  return (
-    <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
-      <p className='text-white'>
-        <input type="file" onChange={onFileUpload} />  (JSON, CSV) 
-      </p>
-    </li>
-  );
+    return (
+        <div style={{
+            position: 'fixed',
+            bottom: '60px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
+              <p className='text-white'>
+                <input type="file" onChange={onFileUpload} />  (JSON, CSV) 
+              </p>
+            </li>
+        </div>
+    );
 }
 
 export default AddReportFromFile;
