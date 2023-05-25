@@ -60,8 +60,8 @@ THEN I am provided with comprehensive details about its individual performance, 
 
 ## Live Application 🔴
 
-URL
+https://infinite-meadow-71565.herokuapp.com
 
 ## Slideshow Link 📽️
 
-URL
+https://docs.google.com/presentation/d/19zFIKZu9sW8O49213NqBE30-ZFEB0sl3pxwoexU6aPo/edit?usp=sharing

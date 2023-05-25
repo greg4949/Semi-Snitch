@@ -29,9 +29,7 @@ function AddReportFromFile() {
             const report = await addReport({ variables: { name: 'test' } });
             const reportId = report.data.addReport._id;
             const idleInfo = JSON.parse(await readFile(event.target.files[0]));
-
             for (const info of idleInfo) {
-                const weatherData = await fetchWeatherData(info.lat, info.long);
                 try {
                     await addIdle({
                         variables: {
@@ -44,10 +42,7 @@ function AddReportFromFile() {
                             state: info.state,
                             lat: info.lat,
                             long: info.long,
-                            reportId: reportId,
-                            minTemp: String(weatherData.main.temp_min) || '666666',
-                            maxTemp: String(weatherData.main.temp_max) || '666666',
-                            coaching: 'none'
+                            reportId: reportId
                     }}); 
                 } catch (e) { console.error(e); }
             }
