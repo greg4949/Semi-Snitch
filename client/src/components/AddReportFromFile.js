@@ -25,14 +25,15 @@ function AddReportFromFile() {
   };
 
 
-  console.log(document.location.href)
   const onFileUpload = async (event) => {
 
+    const reportName = event.target.files[0].name
+    const reportNameSplit = reportName.split('.')
+    
     try {
-      const report = await addReport({ variables: { name: 'test' } });
+      const report = await addReport({ variables: { name: reportNameSplit[0] } });
       const reportId = report.data.addReport._id;
       const idleInfo = JSON.parse(await readFile(event.target.files[0]));
-
 
       for (const info of idleInfo) {
         const weatherData = await fetchWeatherData(info.lat, info.long);
@@ -73,7 +74,7 @@ function AddReportFromFile() {
           }}>
             <li className='flex flex-col gap-5 m-10 bg-gray-500 rounded p-2 hover:bg-gray-600 active:bg-gray-400'>
               <p className='text-white'>
-                <input type="file" onChange={onFileUpload} />  (JSON, CSV)
+                <input type="file" onChange={onFileUpload} />  (JSON)
               </p>
             </li>
         </div>
