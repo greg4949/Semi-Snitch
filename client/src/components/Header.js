@@ -7,7 +7,7 @@ const Header = () =>
 
   const handleLogout = () => {
     localStorage.removeItem('id_token');
-    window.location.replace('/login')
+    window.location.reload()
   };
 
   const loggedIn = localStorage.getItem('id_token');
