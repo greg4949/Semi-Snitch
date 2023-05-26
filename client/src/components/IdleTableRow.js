@@ -11,6 +11,9 @@ export default function IdleTableRow({event}){
         updateCoaching({variables: {idleId: event._id, coaching: coachingStatus}})
     }, [coachingStatus])
 
+    const hours = Math.floor(event.idleMinutes / 60);
+    const minutes = Math.floor(event.idleMinutes % 60);
+
     return (
     <React.Fragment key={event.startTime}>
         <tr className='table-row'>
@@ -18,7 +21,7 @@ export default function IdleTableRow({event}){
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.endTime}</td>
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.driverName}</td>
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.vehicle}</td>
-        <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.idleMinutes}</td>
+        <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{hours} hours {minutes} minutes</td>
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.city}</td>
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.state}</td>
         <td className='table-cell border border-slate-600 bg-slate-100 p-2'>{event.lat}</td>
