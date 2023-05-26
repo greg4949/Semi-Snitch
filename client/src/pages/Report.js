@@ -31,7 +31,7 @@ export default function Report() {
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>End Time</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Driver Name</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Vehicle</th>
-              <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Idle Minutes</th>
+              <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Idle Time</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>City</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>State</th>
               <th className='table-cell p-2 bg-slate-300 border border-slate-600 text-left'>Latitude</th>
