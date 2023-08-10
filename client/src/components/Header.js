@@ -22,7 +22,9 @@ const Header = () =>
           {loggedIn ? (
             <li>
               <button onClick={handleLogout} className="text-gray-300 hover:text-white">
-                Logout
+                <Link to={`/`}>
+                  Logout
+                </Link>
               </button>
             </li>
           ) : (
